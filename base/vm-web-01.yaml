@@ -68,6 +68,7 @@ spec:
             user: cloud-user
             password: redhat123
             chpasswd: { expire: False }
+            ssh_pwauth: true
             packages:
               - httpd
               - firewalld
@@ -80,10 +81,3 @@ spec:
               - firewall-cmd --permanent --add-service=http || true
               - firewall-cmd --reload || true
         name: cloudinitdisk
-      accessCredentials:
-      - sshPublicKey:
-          source:
-            secret:
-              secretName: workshop-ssh-public-key
-          propagationMethod:
-            noCloud: {}
